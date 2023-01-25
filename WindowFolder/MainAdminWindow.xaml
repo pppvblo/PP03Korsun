@@ -1,0 +1,118 @@
+﻿<Window x:Class="PP03Korsun.WindowFolder.MainAdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PP03Korsun.WindowFolder"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="{x:Null}"
+        AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip"
+        Height="800" Width="1200"
+        MinHeight="800" MinWidth="1200"
+        MaxHeight="800" MaxWidth="1200">
+
+    <Border Style="{DynamicResource MainBorder}"
+           MouseDown="Border_MouseDown">
+        <Grid>
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top">
+
+                <Image x:Name="CloseBtn"
+                       Source="/ResourceFolder/ImageFolder/CloseBtnBLACK.png"
+                       Width="20" Height="15" Margin="0 10 10 0"
+                       MouseLeftButtonDown="CloseBtn_MouseLeftButtonDown"/>
+                <Image x:Name="ExitBtn"
+                       Source="/ResourceFolder/ImageFolder/ExitBLACK.png"
+                       Width="20" Margin="10 10 15 0"
+                       MouseLeftButtonDown="ExitBtn_MouseLeftButtonDown"/>
+            </StackPanel>
+
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0"
+                        Style="{DynamicResource MainBorderF}"
+                        CornerRadius="17 0 0 17">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="200"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Администратор"
+                               Style="{DynamicResource HeadingLabel}"
+                               Grid.Row="0"/>
+
+                        <Image Source="/ResourceFolder/ImageFolder/MainLogo.png"
+                           Grid.Row="1"
+                           Width="200"
+                           Height="170"/>
+
+                        <StackPanel Grid.Row="2">
+
+                            <Label Content="Пользовтели" Margin="0 20 0 0"
+                                   Style="{DynamicResource FrontSeparatorLabel}"/>
+                            <Separator Margin="5 0 5 5"/>
+
+                            <Button x:Name="ListEmployeeBtn"
+                                Width="260"
+                                Height="50"
+                                HorizontalAlignment="Left"
+                                materialDesign:ButtonAssist.CornerRadius="7" Cursor="Hand"
+                                Click="ListEmployeeBtn_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/PP03Korsun;component/ResourceFolder/ImageFolder/LIST.png"
+                                   Width="30"/>
+                                    <TextBlock Text="Список сотрудников"
+                                       Style="{DynamicResource ButtonTextBlock}"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="AddEmployeeBtn"
+                                Width="260"
+                                Height="50"
+                                HorizontalAlignment="Left"
+                                materialDesign:ButtonAssist.CornerRadius="7" Cursor="Hand"
+                                Click="AddEmployeeBtn_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/PP03Korsun;component/ResourceFolder/ImageFolder/AddBtn.png"
+                                   Width="30"/>
+                                    <TextBlock Text="Добавить сотрудника"
+                                       Style="{DynamicResource ButtonTextBlock}"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="1"
+                        Style="{DynamicResource FrameLabel}"
+                           Content="{Binding ElementName=MainFrame,
+                        Path=Content.Title}"/>
+
+                    <Frame Grid.Row="2" Name="MainFrame" Margin="10,10,10,10"
+                           NavigationUIVisibility="Hidden"/>
+                </Grid>
+            </Grid>
+        </Grid>
+
+    </Border>
+</Window>

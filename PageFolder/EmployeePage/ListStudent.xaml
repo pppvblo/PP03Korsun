@@ -1,0 +1,150 @@
+﻿<Page x:Class="PP03Korsun.PageFolder.EmployeePage.ListStudent"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PP03Korsun.PageFolder.EmployeePage"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="980"
+      Title="Список студентов">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" 
+                    Grid.Column="1"
+                    HorizontalAlignment="Center">
+
+            <Label Content="Поиск" 
+               Foreground="#000000"
+               Style="{DynamicResource FrontSeparatorLabel}"/>
+
+            <TextBox x:Name="SearchTb" 
+                 TextChanged="SearchTb_TextChanged" 
+                 Width="500"
+                 Height="50"
+                 Style="{DynamicResource MaterialDesignOutlinedTextBox}"/>
+        </StackPanel>
+
+        <ListView x:Name="ListStudentLB" 
+                 Grid.Row="2"
+                  Grid.Column="1"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Редактировать" Name="EditStudentMI"
+                              Click="EditStudentMI_Click"/>
+                    <MenuItem Header="Удалить" Name="DeleteStudedntMI"
+                              Click="DeleteStudedntMI_Click"/>
+                    <MenuItem Header="Подробнее" Name="InfoStudent"
+                              Click="InfoStudent_Click"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Фамилия"
+                                   FontWeight="Bold"
+                                   Style="{DynamicResource ListTextBlock}"/>
+                        <TextBlock Text="{Binding LastNameStudent}"
+                                   Grid.Column="1"
+                                   Style="{DynamicResource ListTextBlock}"/>
+
+
+                        <TextBlock Text="Имя"
+                                   FontWeight="Bold"
+                                   Grid.Row="1"
+                                   Style="{DynamicResource ListTextBlock}"/>
+                        <TextBlock Text="{Binding FirstNameStudent}"
+                                   Grid.Column="1"
+                                   Grid.Row="1"
+                                   Style="{DynamicResource ListTextBlock}"/>
+
+                        <TextBlock Text="Отчество"
+                                   FontWeight="Bold"
+                                   Grid.Row="2"
+                                   Style="{DynamicResource ListTextBlock}"/>
+                        <TextBlock Text="{Binding MiddleNameStudent}"
+                                   Grid.Column="1"
+                                   Grid.Row="2"
+                                   Style="{DynamicResource ListTextBlock}"/>
+
+                        <TextBlock Text="Номер телефона"
+                                   FontWeight="Bold"
+                                   Grid.Row="3"
+                                   Style="{DynamicResource ListTextBlock}"/>
+                        <TextBlock Text="{Binding PhoneNumber}"
+                                   Grid.Column="1"
+                                   Grid.Row="3"
+                                   Style="{DynamicResource ListTextBlock}"/>
+
+                        <TextBlock Text="Email"
+                                   FontWeight="Bold"
+                                   Grid.Row="4"
+                                   Style="{DynamicResource ListTextBlock}"/>
+                        <TextBlock Text="{Binding Email}"
+                                   Grid.Column="1"
+                                   Grid.Row="4"
+                                   Style="{DynamicResource ListTextBlock}"/>
+
+                        <TextBlock Text="Дата рождения"
+                                   FontWeight="Bold"
+                                   Grid.Row="5"
+                                   Style="{DynamicResource ListTextBlock}"/>
+                        <TextBlock Text="{Binding DateOfBirth, StringFormat=dd.MM.yyyy}"
+                                   Grid.Column="1"
+                                   Grid.Row="5"
+                                   Style="{DynamicResource ListTextBlock}"/>
+
+                        <TextBlock Text="Группа"
+                                   FontWeight="Bold"
+                                   Grid.Row="6"
+                                   Style="{DynamicResource ListTextBlock}"/>
+                        <TextBlock Text="{Binding Group.GroupName}"
+                                   Grid.Column="1"
+                                   Grid.Row="6"
+                                   Style="{DynamicResource ListTextBlock}"/>
+
+                        <Image Source="{Binding PhotoStudent}"
+                               Grid.Row="7"
+                               Grid.ColumnSpan="1"
+                               Height="150"
+                               Width="150"/>
+
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
+
+
+    </Grid>
+</Page>

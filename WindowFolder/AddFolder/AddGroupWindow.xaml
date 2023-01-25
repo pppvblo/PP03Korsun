@@ -1,0 +1,112 @@
+﻿<Window x:Class="PP03Korsun.WindowFolder.AddFolder.AddGroupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PP03Korsun.WindowFolder.AddFolder"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Height="400" Width="500"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip"
+        Background="{x:Null}"
+        Loaded="Window_Loaded"
+        BorderBrush="Black" >
+    <Border Style="{DynamicResource MainBorder}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Группа" 
+                   FontSize="18"
+                   Style="{DynamicResource FrameLabel}"/>
+
+            <Button x:Name="BackAddGroupBtn"
+                HorizontalAlignment="Left"
+                Width="100"
+                Height="50"
+                materialDesign:ButtonAssist.CornerRadius="7" Cursor="Hand"
+                Style="{DynamicResource SkipButton}"
+                Margin="10"
+                Click="BackAddGroupBtn_Click">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <Image Source="/ResourceFolder/ImageFolder/BackBtn.png" 
+                       Width="15"/>
+                    <TextBlock Text="Назад" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Button>
+
+            <TextBox x:Name="AddGroupTB"  
+                         materialDesign:HintAssist.Hint="Группа*"
+                         MaxLength="70" Grid.Row="1"
+                         Grid.ColumnSpan="2"/>
+            
+            <ComboBox Name="IdTutor"
+                      Grid.Row="2"
+                      materialDesign:HintAssist.Hint="Куратор*"
+                      Grid.ColumnSpan="2"
+                      SelectedValuePath="IdTutor"
+                      SelectedItem="{Binding Tutor}">
+
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding
+                                    StringFormat="{}{0} {1} {2}">
+                                    <Binding Path="LastNameTutor"/>
+                                    <Binding Path="FirstNameTutor"/>
+                                    <Binding Path="MiddleNameTutor"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            
+            
+            <ComboBox Name="IdSpecialization"
+                      Grid.Row="3"
+                      materialDesign:HintAssist.Hint="Специальность*"
+                      SelectedValuePath="IdSpecialization"
+                      SelectedItem="{Binding Specialization}"
+                      DisplayMemberPath="SpecializationName"/>
+
+           
+                <Button x:Name="AddGroupBtn"
+                    Content="Добавить"
+                    Grid.Row="7"
+                    Style="{DynamicResource ButtonADD}"
+                    materialDesign:ButtonAssist.CornerRadius="7" Cursor="Hand"
+                    Click="AddGroupBtn_Click"/>
+
+            <Button x:Name="AddSpecialixation" HorizontalAlignment="Center"
+                        Click="AddSpecialixation_Click"
+                        Margin="10"
+                        Grid.Column="2"
+                        Grid.Row="3"
+                        Width="180"
+                        Background="Transparent">
+                <StackPanel>
+                    <Image Source="/PP03Korsun;component/ResourceFolder/ImageFolder/AddBtn.png"
+                               Width="25"/>
+                </StackPanel>
+            </Button>
+
+
+        </Grid>
+    </Border>
+</Window>
